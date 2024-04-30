@@ -77,7 +77,7 @@ When launching the application, the homepage opens automatically. On this page, 
 ###  Information to enter: loading datasets to analyze.
 
 The first step in using the application is to import the data collected. The data must comply with a standard defined by Ifremer, the outline of which can be found here:<br>
-http://htmlpreview.github.io/?https://github.com/Aurel-HB/GranulatShiny/blob/main/Description_Format_Generique_GranulatShiny.html
+https://raw.githack.com/GranulatShiny/GranulatShiny/main/Description_Format_Generique_GranulatShiny.html
 <br> 
 
 Trois cas de figures peuvent se présenter : <br>

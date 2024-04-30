@@ -103,7 +103,7 @@ mod_reception_server <- function(input, output, session, r){
         url <- a(
           icon('book', style = "font-size: 25px;"),
           "Guide utilisateur",
-          href = "https://raw.githack.com/Aurel-HB/GranulatShiny/main/Guide_utilisateur.html",
+          href = "https://raw.githack.com/GranulatShiny/GranulatShiny/main/Guide_utilisateur.html",
           style = "font-size: 20px;"
         )
       }
@@ -111,7 +111,7 @@ mod_reception_server <- function(input, output, session, r){
         url <- a(
           icon('book', style = "font-size: 25px;"),
           "User guide",
-          href = "https://raw.githack.com/Aurel-HB/GranulatShiny/main/Guide_utilisateur.html",
+          href = "https://raw.githack.com/GranulatShiny/GranulatShiny/main/User_guide.html",
           style = "font-size: 20px;"
         )
       }
