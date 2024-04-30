@@ -76,7 +76,7 @@ Lors du démarrage de l'application, la page d'accueil s'ouvre automatiquement. 
 ###  Informations à rentrer : chargement des jeux de données à analyser
 
 La première étape d'utilisation de l'application est l'importation des données collectées. Celles-ci doivent répondre à un standard défini par l’Ifremer et dont le canevas peut être retrouvé ici : <br>
-http://htmlpreview.github.io/?https://github.com/Aurel-HB/GranulatShiny/blob/main/Description_Format_Generique_GranulatShiny.html
+https://raw.githack.com/GranulatShiny/GranulatShiny/main/Description_Format_Generique_GranulatShiny.html
 <br> 
 
 Trois cas de figures peuvent se présenter : <br>
