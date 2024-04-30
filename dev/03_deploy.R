@@ -40,7 +40,7 @@ golem::add_dockerfile_with_renv_shinyproxy()
 
 
 #library(rsconnect)
-#rsconnect::setAccountInfo(name='aurelhb',
+#rsconnect::setAccountInfo(name='granulat',
 #                          token='<TOKEN>',
 #                          secret='<SECRET>')
 
