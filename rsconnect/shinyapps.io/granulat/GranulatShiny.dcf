@@ -1,0 +1,10 @@
+name: GranulatShiny
+title: GranulatShiny
+username: granulat
+account: granulat
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 11900515
+bundleId: 8558990
+url: https://granulat.shinyapps.io/GranulatShiny/
+version: 1
