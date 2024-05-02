@@ -47,6 +47,8 @@ mod_reception_ui <- function(id){
              uiOutput(ns("inf_file_url_5")),
              uiOutput(ns("inf_file_url_6"))),
          hr(),
+        uiOutput(ns("github")),
+        hr(),
                       actionButton("start", "start", icon = icon("ship"))
                  ),
       br()),
@@ -163,7 +165,15 @@ mod_reception_server <- function(input, output, session, r){
       tagList(url)
     })
 
-
+    output$github <- renderUI({
+      url <- a(
+        icon('shrimp', style = "font-size: 20px;"),
+        "GitHub Page",
+        href = "https://github.com/GranulatShiny/GranulatShiny",
+        style = "font-size: 20px;"
+      )
+      tagList(url)
+    })
 
 
     # Output the intro text
