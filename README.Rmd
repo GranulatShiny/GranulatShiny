@@ -2,8 +2,10 @@
 output: github_document
 ---
 
-GranulatShiny is a Shiny app that automate the statistical processing of data collected as part of surveys dedicated to fishery resources and ichthyofauna on marine aggregate extraction concessions. The app produces standardized figures and tables based on the “Protocole halieutique”, and provides an interactive, graphical user interface for the analysis without with no coding skills required. GranulatShiny is composed of 3 statistic approaches (Explanatory, Descriptive and Inferential) that can be used primarily to quantify the influence of marine aggregate extraction concessions on fish communities.
+GranulatShiny is a Shiny app that helps user to analyse the data collected as part of surveys dedicated to fishery resources and ichthyofauna on marine aggregate extraction concessions. The app produces standardized figures and tables based on the “Protocole halieutique”, and provides an interactive, graphical user interface for the analysis without with no coding skills required. GranulatShiny is composed of 3 statistic approaches (Explanatory, Descriptive and Inferential) that can be used primarily to quantify the influence of marine aggregate extraction concessions on fish communities.
+
+GranulatShiny est une application Shiny qui aide l'utilisateur à analyser les données collectées dans le cadre des enquêtes consacrées aux ressources halieutiques et à l'ichtyofaune dans les concessions d'extraction de granulats marins. L'application produit des figures et des tableaux standardisés basés sur le "Protocole halieutique", et fournit une interface graphique interactive pour l'analyse sans aucune compétence en codage. GranulatShiny est composé de 3 approches statistiques (explicative, descriptive et inférentielle) qui peuvent être utilisées principalement pour quantifier l'influence des concessions d'extraction de granulats marins sur les communautés de poissons.
 
 
-
+GranulatShiny :  https://granulat.shinyapps.io/GranulatShiny/
 
