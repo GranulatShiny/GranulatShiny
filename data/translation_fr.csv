@@ -60,6 +60,7 @@ Sélectionner la covariable :,Select the covariate:
 Sélectionner l'interaction :,Select the interaction
 Sélectionnez la loi de distribution,Select the probability distribution
 Legende,Legend
+Vous n'avez pas assez de données pour réaliser un GLM ou un GLMM,You don't have enough values to build a GLM or a GLMM
 Après avoir choisi une distribution vous pouvez passer à la construction du modèle,Once you have chosen a distribution you can move on to building the model
 La courbe bleue correspond à la fonction de densité de la variable,The blue curve corresponds to the density function of the variable
 La courbe verte correspond à la loi de distribution tel que les paramètres sont estimés à partir de la moyenne et de l'écart-type de la variable,The green curve corresponds to the probability distribution as estimated from the mean and standard deviation of the variable

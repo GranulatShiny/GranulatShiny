@@ -132,7 +132,7 @@ mod_Choix_loi_server <- function(input, output, session, r){
       return(i18n$t("Après avoir choisi une distribution vous pouvez passer à la construction du modèle"))
     }
     if(nb_value() < 30){
-      return("Vous n'avez pas assez de données pour réaliser un GLM ou un GLMM")
+      return(i18n$t("Vous n'avez pas assez de données pour réaliser un GLM ou un GLMM"))
     }
   })
 
