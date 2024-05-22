@@ -626,7 +626,7 @@ summary(GLM)
 
 Le GLM sort des résultats proches de celui du GLMM et s'analyse de la même manière. Cependant, il ne prend pas en compte les effets aléatoires induits par l'environnement ou la méthode utilisée et sera donc moins précis.
 
-#####     [Analyses de variances par permutations]{.underline}
+#####     [Analyse de variance par permutations]{.underline}
 
 Méthode de PERMANOVA intégrée dans l'application
 
