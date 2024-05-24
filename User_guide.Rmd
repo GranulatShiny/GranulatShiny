@@ -196,7 +196,7 @@ The Shannon-Weaver diversity index is a widely used index for comparing diversit
 
 $$ H′= -\sum_{i}^S (p_{i}*ln(p_{i})) $$
 
-où :<br> **S** is the total number of species, <br> **pi** is the proportion of the i-th species among all the species present, <br> **ln** represents the neperian logarithm
+where :<br> **S** is the total number of species, <br> **pi** is the proportion of the i-th species among all the species present, <br> **ln** represents the neperian logarithm
 
 The value of the Shannon-Weaver diversity index is generally between 1.5 and 3.5 and rarely exceeds 4.5. A higher Shannon-Weiner index indicates a greater diversity of species and a more uniform distribution between these species.
 
@@ -473,7 +473,7 @@ The value of ***N*** is obtained by transforming the value of ***Y*** by the lin
 
 #####     [Generalized linear mixed model]{.underline}
 
-Generalized linear mixed models (GLMM) are an extension of GLMs. A GLMM is called "mixed" when it includes at least one "fixed" effect and at least one "random" effect. Fixed effects correspond to the explanatory variables whose effect on the response variable is expected and for which the user wishes to estimate an associated parameter (*β<sub>i</sub>*, the size of the effect of explanatory variable *i*). Random effects are not evaluated; they are only used to indicate to the model that the data are not independent and reflect a correlation between the statistical units. From a statistical point of view, incorporating random effects improves the estimation of the model's residual deviance by structuring the error term (***ε***). In doing so, it limits biases in the estimation of the model's parameters (***β***) and their standard errors. Ultimately, this results in parameter values closer to reality and more reliable *p-values*.
+Generalized linear mixed models (GLMM) are an extension of GLMs. A GLMM is called "mixed" when it includes at least one "fixed" effect and at least one "random" effect. Fixed effects correspond to the explanatory variables whose effect on the response variable is expected and for which the user wishes to estimate an associated parameter (*β<sub>i</sub>*, the size of the effect of explanatory variable *i*). Random effects are not evaluated; they are only used to indicate to the model that the data are not independent and reflect a correlation between the statistical units. From a statistical point of view, incorporating random effects improves the estimation of the model's residual deviance by structuring the error term (***ε***). In doing so, it limits biases in the estimation of the model's parameters (***β***) and their standard errors. Ultimately, this results in parameter values closer to reality and more reliable p-values.
 
 #####     [Analysis of variance using permutations]{.underline}
 
@@ -590,11 +590,11 @@ The last section shows the correlations between the fixed-effect terms of the mo
 
 Post-hoc analysis of the GLMM model on abundance.
 
+After obtaining the modeling results, the application offers a series of graphs to diagnose the quality of the model fit, focusing on residual analysis. These graphs are generated using the DHARMa package ("Residual Diagnostics for Hierarchical (Multi-level/Mixed) Regression Models") in R.
+
 ```{r, echo=FALSE, warning=FALSE}
 plot(simulateResiduals(GLMM))
 ```
-
-After obtaining the modeling results, the application offers a series of graphs to diagnose the quality of the model fit, focusing on residual analysis. These graphs are generated using the DHARMa package ("Residual Diagnostics for Hierarchical (Multi-level/Mixed) Regression Models") in R.
 
 The left graph, called the "QQ plot residual" or quantile-quantile plot of the residuals, represents the expected residuals versus the actual observations. In this plot, each point represents a residual calculated by the model for a given observation. Ideally, these points should closely follow a red diagonal line, indicating that the residuals are normally distributed. Significant deviations from this red line suggest a poor model fit to the observed data.
 
@@ -615,16 +615,16 @@ On the right graph, tests are performed on the uniformity and homogeneity of var
 
 The second test corresponds to a Levene's Test. Levene's Test is used to assess whether the variances of the residuals differ significantly between the groups defined by the qualitative factors. It tests the null hypothesis that the variances are equal across all groups. A low "p-value" (generally < 0.05) indicates a significant difference in the variances of the residuals between the groups, suggesting that the homogeneity of variances assumption is not met.
 
-In the particular case where there are too many different levels due to multiple covariates (or the explanatory variables are quantitative), the part on uniformity and homogeneity of groups is replaced by a representation of the model residuals compared to the model predictions. If there are no issues, the phrase "No significant problems detected" is displayed at the top of the graph. If there are significant deviations of the residuals from a uniform distribution across different quantiles, or if the observed quantile deviations are statistically significant, the associated tests appear in red, suggesting a model inadequacy for certain aspects of the data. Finally, outliers from the simulation (data points that fall outside the range of simulated values) are highlighted with red stars. These points should be interpreted with caution, as we do not know "how much" these values deviate from the model's expectations. The important thing is to ensure that the verification tests are not significant.
-
 In the case of the example, the Kolmogorov-Smirnov, Outlier, and Dispersion tests are not significant, so there is no problem. If any of these tests were displayed in red, it would indicate that the model is not optimal, and it would be possible to look for another model that would fit better. Since these models are based on real data, it is sometimes impossible to find a perfect model. In that case, the model with the fewest warnings should be chosen. We can also see that the uniformity test is validated, but not the homogeneity test. Once the model is validated, you can change tabs and move on to visualizing the effects associated with the model. If we add the "year" covariate to our GLMM model, representing 96 levels, the graph comparing the groups is replaced by a graph comparing the global predictions with the model residuals.
 
-This revised output includes detailed steps and checks to ensure the model fits the data well. By using residual analysis and multiple diagnostic tests, GranulatShiny provides a thorough evaluation of the model, allowing users to identify and address potential issues before proceeding with the analysis of effects and visualizations.
+In the particular case where there are too many different levels due to multiple covariates (or the explanatory variables are quantitative), the part on uniformity and homogeneity of groups is replaced by a representation of the model residuals compared to the model predictions. If there are no issues, the phrase "No significant problems detected" is displayed at the top of the graph. If there are significant deviations of the residuals from a uniform distribution across different quantiles, or if the observed quantile deviations are statistically significant, the associated tests appear in red, suggesting a model inadequacy for certain aspects of the data. Finally, outliers from the simulation (data points that fall outside the range of simulated values) are highlighted with red stars. These points should be interpreted with caution, as we do not know "how much" these values deviate from the model's expectations. The important thing is to ensure that the verification tests are not significant.
 
 ```{r, echo=FALSE, warning=FALSE}
 long_glmm <- glmer(log(Abun) ~ traitement * saison + year + (1|campagne) + (1|station), data = dataset, family = gaussian(link = identity))
 plot(simulateResiduals(long_glmm))
 ```
+
+This revised output includes detailed steps and checks to ensure the model fits the data well. By using residual analysis and multiple diagnostic tests, GranulatShiny provides a thorough evaluation of the model, allowing users to identify and address potential issues before proceeding with the analysis of effects and visualizations.
 
 In some cases, the GLMM modeling does not converge. This means that the available data does not allow the calculation algorithm, associated with the model formulation decided by the user, to estimate parameter values. In such cases, an error message appears: "*There is an error during modeling. Please change the distribution or the model.*" It is also possible that the model produces results, but the post-hoc residual analysis is not satisfactory.
 <br>Example:
@@ -635,7 +635,7 @@ plot(simulateResiduals(bad_glmm))
 ```
 
 When GLMM modeling does not converge, it is preferable to opt for modeling methods associated with simpler calculation algorithms, i.e., with fewer parameters to estimate. GranulatShiny provides two such alternatives: GLM and PERMANOVA.
-<br> NOTE: When the dataset used for modeling consists of 30 or fewer non-zero observations, it is preferable to stick to the least computationally expensive method, namely PERMANOVA.
+<br> **NOTE:** When the dataset used for modeling consists of 30 or fewer non-zero observations, it is preferable to stick to the least computationally expensive method, namely PERMANOVA.
 
 #####     [Generalized linear model]{.underline}
 
@@ -655,17 +655,21 @@ PERMANOVA method integrated into the application
 
 In the case of GranulatShiny, PERMANOVA is applied to a column matrix that mostly groups abundances or biomasses. When it concerns a variable derived from floristic or faunistic surveys, a zero implies the absence of the considered species. While the co-presence of a species can indicate similar conditions in terms of ecological niches and the presence/absence can contrast two niches, the double absence (double 0) can be due to different reasons (rare species not collected, sampling outside ecological niche for both species, etc.). In the latter case, this double 0 is therefore typically not taken into account to estimate the similarity between two elements, especially in the context of biological community characterization. Thus, the data on which PERMANOVA will be applied are quantitative and double zeros are not considered, so the method that seems most appropriate is that of the Bray-Curtis coefficient.
 
-The Bray-Curtis dissimilarity index is used in ecology and biology to assess the dissimilarity between two given samples in terms of the abundance of taxa present in each of these samples. It ranges from 0 (the two samples have the same composition) to 1 (the samples are completely dissimilar). Bray-Curtis dissimilarity is often used in the literature. Its distribution is asymmetric and semi-metric. It is calculated as follows: $$ d_{jk}=\frac{\sum_{i} |x_{ij}-x_{ik}|}{\sum_{i} (x_{ij}+x_{ik})} $$ où *i = colonne; j,k = lignes comparées; x = valeurs d'abondances*
+The Bray-Curtis dissimilarity index is used in ecology and biology to assess the dissimilarity between two given samples in terms of the abundance of taxa present in each of these samples. It ranges from 0 (the two samples have the same composition) to 1 (the samples are completely dissimilar). Bray-Curtis dissimilarity is often used in the literature. Its distribution is asymmetric and semi-metric. It is calculated as follows: $$ d_{jk}=\frac{\sum_{i} |x_{ij}-x_{ik}|}{\sum_{i} (x_{ij}+x_{ik})} $$ where *i = column; j,k = compared rows; x = abundance values*
 
-Dans le cas où la matrice d’entrée n’a qu’une seule colonne soit une seule espèce et que dans les valeurs d’entrées, il existe des zéros, il arrive parfois que le dénominateur soit égale à zéro ce qui n’est pas possible et donc créer une erreur dans la matrice de distance. C’est le cas pour tous les indicateurs habituellement utilisés pour des données d'abondances qui pondèrent leur distance en fonction de l’abondance totale dans les sites comparés. Cette méthode ne pouvant s'utiliser dans notre cas, un autre coefficient de calcul de distance a été recherché. Celui-ci ne devait également pas tenir compte des doubles zéros sur des quantitatives.
+In the case where the input matrix has only one column, i.e., a single species, and zeros exist in the input values, it sometimes happens that the denominator equals zero, which creates an error in the distance matrix. This issue arises for all indicators typically used for abundance data that weight their distance based on the total abundance in the compared sites, such as the Bray-Curtis dissimilarity. Since this method cannot be used in our case, another distance calculation coefficient was sought. This coefficient also needed to disregard double zeros in quantitative data.
 
-La méthode retenue est la métrique du chi². Celle-ci donne davantage de poids aux espèces rares qu’aux espèces communes. Son utilisation est recommandée lorsque les espèces rares sont de bons indicateurs de conditions écologiques particulières. Pour appliquer cette méthode, il faut d'abord standardiser les données selon la méthode du chi² comme ceci : $$ x'_{ij}=\frac{x_{ij}}{\sum x_{j} * \sqrt \sum x_{i}} $$ où *i = colonne; j = ligne; x = valeurs d'abondances*
+The chosen method is the Chi-square (χ²) metric. Its use is recommended when rare species are good indicators of specific ecological conditions. To apply this method, the data must first be standardized using the Chi-square method as follows: $$ x'_{ij}=\frac{x_{ij}}{\sum x_{j} * \sqrt \sum x_{i}} $$ where *i = column; j = row; x = abundance values*
 
-Ensuite, on calcule la matrice de distance en calculant la distance euclidienne sur la matrice de données standardisées. $$d_{jk}=\sqrt \sum_{i} (x_{ij}-x_{ik})² $$ où *i = colonne; j,k = lignes comparées; x = valeurs d'abondances standardisées*
+We then calculate the distance matrix by calculating the Euclidean distance on the standardised data matrix. $$d_{jk}=\sqrt \sum_{i} (x_{ij}-x_{ik})² $$ where *i = column; j,k = compared rows; x = standardised abundance values*
 
-L'inconvénient avec cette méthode, le calcul des effets se produisant sur des données transformées, il est n'est pas possible de quantifier directement l'impact d'un effet sur la variable initiale. On ne peut donc pas dire si un effet est plus ou moins fort sur la donnée initiale car celui-ci s'applique à la donnée transformée. Par contre, si un effet est considéré significatif sur les données transformées alors il l'est également sur les données initiales.
+The downside of this method, where the effects are calculated on transformed data, is that it is not possible to directly quantify the impact of an effect on the initial variable. Therefore, we cannot say whether the effect of an explanatory variable is more or less important on the original data, as it applies to the transformed data. However, if an effect is considered significant on the transformed data, it is also significant on the original data.
 
-Reproduction de la sortie R de la PERMANOVA sur l'abondance
+Using PERMANOVA
+
+When evaluating the impact of extraction on a rarely sampled species, it is not possible to use a GLMM or GLM. These models are sensitive to a high presence of zeros in the data and cannot converge in such cases. In the application, when this scenario arises, it is recommended to use PERMANOVA. However, as shown above, for an analysis variable with many zeros, PERMANOVA must be used with caution and the distance calculation metric must be chosen precisely. These challenging datasets are referred to as "zero-inflated" data, and specific models exist for their analysis. The most commonly used model is the "delta" model. This model analyzes the data in two stages: first, by performing a presence/absence analysis, followed by an analysis on the quantitative values associated with the presence. Currently, this type of model is not implemented in GranulatShiny.
+
+Reproduction of PERMANOVA output R on abundance
 
 ```{r, echo=FALSE, warning=FALSE}
 
@@ -678,9 +682,15 @@ result
 
 ```
 
-Dans le tableu de sortie de la PERMANOVA, on retrouve le nombre de permutations et la formule du modèle. Ensuite on retouve plusieurs indicateurs associés à chaque covariable explicative.<br> **Df (degrés de liberté)**: Cette colonne indique les degrés de liberté associés à chaque terme du modèle.<br> **SumOfSqs (Somme des carrés)**: Cette colonne indique la somme des distances au carré entre les observations dans l'espace multivarié.<br> **R2 (R-carré)**: Cette colonne indique la proportion de variance expliquée par chaque terme du modèle. Par exemple, pour "traitement", 8,34 % de la variation des données peut être expliquée par le facteur traitement.<br> **F (statistique F)** : Cette colonne indique la statistique F pour chaque terme, qui vérifie si la variation expliquée par ce terme est significativement plus importante que ce que l'on attendrait du hasard. Des valeurs F plus élevées indiquent des preuves plus solides contre l'hypothèse nulle d'absence d'effet.<br> **Pr(\>F) (valeur p)**: Cette colonne indique la valeur p associée à la statistique F pour chaque terme. Elle indique la probabilité d'observer les données si l'hypothèse nulle d'absence d'effet (c'est-à-dire si toutes les moyennes des groupes sont égales) était vraie. Des valeurs p plus faibles suggèrent une preuve plus forte contre l'hypothèse nulle et indiquent que le terme est un prédicteur significatif de la variation.<br> La PERMANOVA est la méthode à utiliser en dernière. Elle esty moins précise et apporte moins d'informations qu'un GLMM ou qu'un GLM.
+In the PERMANOVA output table, we find the number of permutations and the model formula. Following that, several indicators associated with each explanatory covariate are provided:
 
-Analyse complémentaire a posteriori de la PERMANOVA sur l'abondance.
+**Df (degrees of freedom):** This column indicates the degrees of freedom associated with each term in the model.<br>
+**SumOfSqs (Sum of Squares):** This column shows the sum of the squared distances between the observations in the multivariate space.<br>
+**R2 (R-squared):** This column indicates the proportion of variance explained by each term in the model. For example, for "treatment," 8.34% of the variation in the data can be explained by the treatment factor.<br>
+**F (F statistic):** This column presents the F statistic for each term, which tests if the variation explained by that term is significantly greater than what would be expected by chance. Higher F values indicate stronger evidence for rejecting the null hypothesis of no effect.<br>
+**Pr(>F) (p-value):** This column shows the p-value associated with the F statistic for each term. It indicates the probability of observing the data if the null hypothesis of no effect (i.e., all group means are equal) were true. Lower p-values suggest stronger evidence against the null hypothesis and indicate that the term is a significant predictor of variation.
+
+Complementary a posteriori analysis of PERMANOVA on abundance.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 
@@ -698,11 +708,11 @@ plot <- ggplot(dataset, aes(x = traitement, y = log(Abun+1)))+
 plot
 ```
 
-<br>Les mêmes boites à moustaches que dans l'onglet Représentation des données sont affichées. Sauf que si la variable de comparaison (dans l'exemple c'est le traitement) a un effet significatif sur la variable expliquée (ici l'abondance) alors la p-value apparait en rouge en haut à gauche du graphique. S'il n'y a pas d'effet détecté pendant la PERMANOVA alors le message "Pas d'effet" apparait en haut à gauche du graphique.
+<br>The same boxplots as in the "Data Representation" tab are displayed. If the comparison variable (in this example, the treatment) has a significant effect on the explained variable (here, abundance), then the p-value appears in red at the top left of the graph. If no effect is detected during the PERMANOVA, the message "No effect" appears at the top left of the graph.
 
 ### Effects representation
 
-Cet onglet permet de visualiser graphiquement les effets des variables explicatives sur la variable expliquée dans le cas d'un GLMM ou d'un GLM. Dans le cas d'une PERMANOVA, cette section n'est pas sollicitée et la fenêtre graphique sera blanche. Cette partie retransforme les estimates du modèle en l'unité initiale (dans le cas de l'abondance c'est un nombre par km²). Ainsi on peut voir la valeur moyenne de l'abondance en fonction de la saison et du traitement. D'abord vous devez choisir les deux prédicteurs à représenter.<br>
+This tab allows for graphical visualization of the effects of explanatory variables on the explained variable in the case of a GLMM or GLM. In the case of a PERMANOVA, this section is not used, and the graphical window will be blank. This part retransforms the estimated parameters of the model back to the original unit (in the case of abundance, it is the number of individuals per km²). This way, you can visualize the mean value of abundance according to season and treatment. First, you need to select the two predictors to be represented.<br>
 
 ```{r, echo=FALSE, warning=FALSE}
       #choix du terme
@@ -710,12 +720,12 @@ Cet onglet permet de visualiser graphiquement les effets des variables explicati
         solidHeader = F,
         status = "danger",
         selectInput( "pred_1",
-          label = "Choississez un premier prédicteur",
+          label = "Choose a first predictor",
           choices = c("traitement","saison"),
           multiple = F,
           selected = c("traitement")),
         selectInput("pred_2",
-          label = "Choississez un second prédicteur",
+          label = "Choose a second predictor",
           choices = c("traitement","saison"),
           multiple = F,
           selected = c("saison")),
@@ -723,17 +733,17 @@ Cet onglet permet de visualiser graphiquement les effets des variables explicati
         )
 ```
 
-Si vous avez plusieurs covariables vous devez les fixer afin de pouvoir visualiser le graphique. <br> Dans l'exemple d'un GLM qui regarde l'abundance totale en fonction du traitement et de la saison, voici le graphique obtenu :
+If you have multiple covariates, you need to fix them to visualize the graph. <br> In the example of a GLM that examines total abundance according to treatment and season, here is the obtained graph:
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 ggpredict(GLM, terms = c("traitement", "saison"))|> plot()
 ```
 
-<br>Ce graphique est une autre manière de représenter le tableau de sortie du modèle de l'onglet précédent.
+<br>This graph is another way of representing the output table of the model in the previous tab.
 
 ### Statistical power
 
-Cette partie est en cours de développement. L'outil antérieur construit par Mathis Cambreling fonctionne seulement pour le jeu de données ayant servi de base à ses calculs. L'outil n'étant pas généralisable, celui-ci a été retiré pour assurer la stabilité actuelle de l'application. Un autre outil est en cours de développement.<br>
+This part is currently under development. A first version of this element was proposed in an earlier version. As the tool cannot be generalised, it has been withdrawn to ensure the current stability of the application.<br>
 
 ## Bibliography
 
