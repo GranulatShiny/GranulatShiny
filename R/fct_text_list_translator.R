@@ -25,7 +25,7 @@ text_list_translator <- function(){
     "Cette partie est consacrée à la création d'un modèle pour l'analyse inférentielle. La variable analysée est rappelée en haut à gauche de l'onglet et peut être modifiée dans l'onglet représentation des données. Dans l'application il est possible de réaliser 3 types de tests inférentiels : GLMM, GLM, Permanova. La méthode GLMM est à prioriser (paragraphe 8.4.2 Protocole halieutique).",
     "Ces deux diagrammes analysent les résidus du modèle a posteriori. Plusieurs indicateurs de vérification sont associés à ces diagrammes et apparaissent en rouge si la modélisation ne s'est pas déroulée correctement",
     "La boite à moustache ou boxplot offre une autre représentation pour interpréter le lien entre la variable expliquée et les variables explicatives comme l'impact, la saison ou l'intéraction des deux. Si la Permanova a détecté un effet alors la p-value s'affiche en rouge en haut à gauche du graphique.",
-    "L'outil antérieur construit par Mathis Cambreling fonctionne seulement pour le jeu de données ayant servi de base à ses calculs. L'outil n'étant pas généralisable, celui-ci a été retiré pour assurer la stabilité actuelle de l'application. Un autre outil est en cours de développement."
+    "Cette partie est en cours de développement. Une première version de cet élément a été proposé dans une version antérieure. L’outil n’étant pas généralisable, celui-ci a été retiré pour assurer la stabilité actuelle de l’application."
   )
 
   en <- c(
@@ -41,7 +41,7 @@ text_list_translator <- function(){
     "This section is devoted to creating a model for inferential analysis. The variable being analysed is shown at the top left of the tab and can be modified in the data representation tab. The application allows you to perform 3 types of inferential tests: GLMM, GLM and Permanova. The GLMM method should be given priority (paragraph 8.4.2 Protocole halieutique).",
     "These two diagrams analyse the model residuals a posteriori. Several verification indicators are associated with these diagrams and appear in red if the modelling was not carried out correctly",
     "The boxplot offers another way of interpreting the link between the variable being explained and the explanatory variables such as impact, season or the interaction of the two. If Permanova has detected an effect, the p-value is displayed in red at the top left of the graph.",
-    "The previous tool built by Mathis Cambreling only works for the dataset used as the basis for his calculations. As the tool cannot be generalised, it has been withdrawn to ensure the current stability of the application. Another tool is currently under development."
+    "This part is currently under development. A first version of this element was proposed in an earlier version. As the tool cannot be generalised, it has been withdrawn to ensure the current stability of the application."
     )
 
   list_translate <- data.frame(fr,en)
